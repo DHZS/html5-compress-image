@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>前端压缩图像demo</title>
+</head>
+<body>
+<form id="form">
+    <input id="input-file" type="file" accept="image/gif,image/jpeg,image/png"/>
+</form>
+<br/>
+<br/>
+<img id="img-compress" src="" alt="压缩后的图片" />
+
+<script src="ImageCompress.1.1.js"></script>
+<script>
+    var inputFile = document.getElementById('input-file');
+    var imgCompress = document.getElementById('img-compress');
+    var form = document.getElementById('form');
+
+    inputFile.addEventListener('change', function () {
+        var file = inputFile.files[0];
+        if (file == null) {
+            return;
+        }
+        if (!ImageCompress.checkFileType(file)) {
+            // 清空文件
+            console.log('error');
+            form.reset();
+            return;
+        }
+
+        var option = ImageCompress.getOptions();
+        option.maxLength = 1080;
+        option.file = file;
+        option.success = function(dataURL) {
+            imgCompress.src = dataURL;
+        };
+        ImageCompress.compressImage(option);
+    });
+
+
+</script>
+</body>
+</html>
