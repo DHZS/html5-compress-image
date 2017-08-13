@@ -1,6 +1,6 @@
 # html5-compress-image
 
-前端压缩图像demo
+前端压缩图像demo [演示地址](https://dhzs.github.io/html5-compress-image/)
 
 ## 用法
 
