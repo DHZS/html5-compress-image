@@ -7,6 +7,8 @@
     var maxNotCompressSize = 200;  // 200KB以内的文件不压缩
     var quality = 0.8;  // 图片压缩质量 0-1之间 1最好
     var img = document.createElement('img');
+    // 解决 Tainted canvases may not be exported 问题
+    img.setAttribute('crossOrigin', 'Anonymous');
     var canvas = document.createElement('canvas');
     var ctx = canvas.getContext('2d');
 
@@ -54,8 +56,6 @@
         };
         reader.readAsDataURL(option.file);
 
-        // 解决 Tainted canvases may not be exported 问题
-        img.setAttribute('crossOrigin', 'anonymous');
         // image onload
         img.onload = function () {
             // 缩放的宽高
