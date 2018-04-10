@@ -55,7 +55,7 @@
         reader.readAsDataURL(option.file);
 
         // 解决 Tainted canvases may not be exported 问题
-        img.setAttribute('crossOrigin', 'Anonymous');
+        img.setAttribute('crossOrigin', 'anonymous');
         // image onload
         img.onload = function () {
             // 缩放的宽高
